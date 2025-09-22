@@ -29,21 +29,21 @@ jobs:
       - name: "Creating build"
         run: npm run build
 
-unit-test:
-  runs-on: ubuntu-latest
+  unit-test:
+    runs-on: ubuntu-latest
 
-  strategy:
-    matrix:
-      node-version: 22.x
+    strategy:
+      matrix:
+        node-version: 22.x
 
-  steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: "npm"
-    - name: "Installing dependencies"
-      run: npm i
-    - name: "Running test"
-      run: npm run test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: "Installing dependencies"
+        run: npm i
+      - name: "Running test"
+        run: npm run test
